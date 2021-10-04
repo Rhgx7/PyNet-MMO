@@ -9,12 +9,19 @@ server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(ADDR)
 
 def handle_client(conn, addr):
-    pass
+    print(f"[New Connection] {addr} connected")
+
+    CONNECTED = True
+    while CONNECTED:
+        msg = conn.rcv() 
 
 def start():
     server.listen()
     while True:
         conn, addr = server.accept()
+        thread = threading.Thread(target=handle_client, args=(conn, addr))
+        thread.start()
+        print(f"Active connections: {threading.active_count() - 1}")
 
 
 print("Starting server")
