@@ -1,2 +1,3 @@
 # PyNet-MMO
-Open source Networking library for mmo games made in python 
+Open source Networking python library for mmo games 
+ 
